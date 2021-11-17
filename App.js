@@ -8,6 +8,8 @@ import Home from './screens/Home';
 import Males from './screens/Males';
 import Females from './screens/Females';
 import Cart from './screens/Cart';
+import ProdDetails from './screens/proddetails';
+import Profile from './screens/Profile';
 
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -27,6 +29,8 @@ export default function App() {
           <Stack.Screen component={Males} name='Males' options={{headerShown:false}} />
           <Stack.Screen component={Females} name='Females' options={{headerShown:false}} />
           <Stack.Screen component={Cart} name='Cart' options={{headerShown:false}} />
+          <Stack.Screen component={ProdDetails} name='ProdDetails' options={{headerShown: false}} />
+          <Stack.Screen component={Profile} name='Profile' options={{headerShown:false}} />
 
 
 

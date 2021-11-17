@@ -2,18 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Image, ScrollView,  StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import { Ionicons, Entypo, AntDesign,  Feather } from '@expo/vector-icons';
+import { male } from '../pictures/Images';
 
-const male = [ 
-    {img: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MTl8dExkc3JhQzZmNXd8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60", title:'Versace Eros', price: 'GHC 370.00', key: 1 },
-    {img: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzF8fHBlcmZ1bWVzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60", title:'Bleu De Chanel', price: 'GHC 440.00', key: 2 },
-    {img: "https://images.unsplash.com/photo-1592400374339-ecb4c15724c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE2fHxwZXJmdW1lc3xlbnwwfDF8MHx8&auto=format&fit=crop&w=800&q=60", title:'Hugo Boss', price: 'GHC 300.00', key: 3 },
-    {img: "https://images.unsplash.com/photo-1579250466094-9370083413dc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTF8fHBlcmZ1bWVzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" , title:'Allure Homme Sport', price: 'GHC 550.00', key: 4},
-    {img: "https://images.unsplash.com/photo-1624811742200-69166e7b7bcc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzl8fHBlcmZ1bWVzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" , title:'Creed Green Irish Tweed', price: 'GHC 900.00', key: 5},
-    {img: "https://images.unsplash.com/photo-1615602400380-3795d0b23777?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQyfHxwZXJmdW1lc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" , title:'Hugo Boss Private Accord', price: 'GHC 700.00', key: 6},
-    {img: "https://images.unsplash.com/photo-1594035910387-fea47794261f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyZnVtZXN8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" , title:'Coco Chanel Noir', price: 'GHC 950.00', key: 7},
-    {img: "https://images.unsplash.com/photo-1588619872756-bb955fe22dc2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fHBlcmZ1bWVzfGVufDB8MXwwfHw%3D&auto=format&fit=crop&w=800&q=60" , title:'Davidoff Cool Water', price: 'GHC 500.00', key: 8},
-    {img: "https://images.unsplash.com/photo-1583442801251-5ce051ed7cb3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njd8fHBlcmZ1bWVzfGVufDB8MXwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" , title:'Acqua Di Gio Absolu', price: 'GHC 780.00', key: 9},
-];
 
 
 
@@ -56,12 +46,15 @@ export default function Males({navigation}) {
             <View>
                 {male.map((item) => {
                     return ( 
-                       
+                        <TouchableWithoutFeedback onPress={() => {
+                            navigation.navigate('ProdDetails', item)
+                        }}>
                         <View style={styles.imageViews}>
                             <Image style={styles.images} source={{uri: item.img}} />
-                            <Text>{item.title}</Text>
-                            <Text>{item.price}</Text>
+                            <Text style={styles.title}>{item.title}</Text>
+                            <Text style={styles.price}>{item.price}</Text>
                         </View>
+                        </TouchableWithoutFeedback>
                     );
                 })}
             </View>           
@@ -75,11 +68,11 @@ export default function Males({navigation}) {
                     <Feather name="heart" size={30} color="#D3D3D3" />
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => {navigation.navigate('Cart')}}>
                     <Feather name="shopping-bag" size={30} color="#D3D3D3" />
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => {navigation.navigate('Profile')}}>
                     <Ionicons name="person-outline" size={33} color="#D3D3D3" />
                 </TouchableOpacity>
                 </View>
@@ -163,7 +156,15 @@ bottombar: {
     borderRadius: 15,
     paddingVertical: 10,
 },
+title:{
+    paddingTop:10,
+    paddingBottom:5,
+    fontSize:25,
+},
 
+price:{
+    fontSize:20,
+},
   
   
 });
